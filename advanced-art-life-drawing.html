@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Drawing and Anatomy - Honey Ant Art</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">HoneyAntArt</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#work" class="nav-link active">Work</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main>
+        <div class="subcategory-header">
+            <h1>Life Drawing and Anatomy</h1>
+            <p>Studies of the human form with a focus on anatomical accuracy and expressive gesture</p>
+            <a href="advanced-art.html" class="back-to-work">← Back to Advanced Art</a>
+        </div>
+        
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg" alt="Figure Study 1" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Figure Study 1</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg" alt="Figure Study 2" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Figure Study 2</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure3.jpg" alt="Figure Study 3" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Figure Study 3</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure4.jpg" alt="Figure Study 4" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Figure Study 4</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure5.jpg" alt="Figure Study 5" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Figure Study 5</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure6.jpg" alt="Figure Study 6" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <h3>Figure Study 6</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">HoneyAntArt</div>
+            <div class="footer-nav">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#work">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://instagram.com/honeyantart" target="_blank" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="mailto:info@honeyantart.com" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="current-year"></span> HoneyAntArt. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Set copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Initialize gallery
+        initGallery();
+    </script>
+</body>
+</html>
