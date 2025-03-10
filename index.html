@@ -1,218 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honey Ant Art - Art Educator Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="manifest" href="icons/site.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* Make category cards clickable */
-        .category-card {
-            cursor: pointer;
-        }
-        
-        /* Ensure the linked text remains on top */
-        .category-info a {
-            position: relative;
-            z-index: 10;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="#home">HoneyAntArt</a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#work" class="nav-link">Work</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
-
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section">
-            <div class="home-content">
-                <h1>Art Educator & Visual Artist</h1>
-                <p class="artist-statement">
-                    Creating meaningful visual experiences while inspiring the next generation of artists through thoughtful education and mentorship.
-                </p>
-            </div>
-
-            <div class="portfolio-carousel">
-                <div class="carousel-container">
-                    <!-- Carousel items will be populated with JavaScript -->
-                </div>
-                <div class="carousel-nav">
-                    <button class="carousel-prev">&lt;</button>
-                    <button class="carousel-next">&gt;</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Work Section -->
-        <section id="work" class="section">
-            <div class="section-header">
-                <h2>Work</h2>
-                <p>Explore my portfolio across different artistic disciplines</p>
-            </div>
-            
-            <div class="category-grid">
-                <div class="category-card" data-category="advanced-art">
-                    <div class="category-slider">
-                        <!-- Slides will be populated with JavaScript -->
-                    </div>
-                    <div class="category-info">
-                        <h3>Advanced Art</h3>
-                        <p>Life Drawing & Anatomy, Painting</p>
-                        <a href="advanced-art.html" class="view-category">View Category</a>
-                    </div>
-                </div>
-                
-                <div class="category-card" data-category="art-education">
-                    <div class="category-slider">
-                        <!-- Slides will be populated with JavaScript -->
-                    </div>
-                    <div class="category-info">
-                        <h3>Art Education</h3>
-                        <p>Teaching Materials, Student Work</p>
-                        <a href="art-education.html" class="view-category">View Category</a>
-                    </div>
-                </div>
-                
-                <div class="category-card" data-category="art-foundations">
-                    <div class="category-slider">
-                        <!-- Slides will be populated with JavaScript -->
-                    </div>
-                    <div class="category-info">
-                        <h3>Art Foundations</h3>
-                        <p>2D Design, Digital Tools, Drawing, Photography</p>
-                        <a href="art-foundations.html" class="view-category">View Category</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="section-header">
-                <h2>About</h2>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="Anthony Picture/AnthonyRivera.jpg" alt="Anthony Rivera" class="profile-image">
-                </div>
-                
-                <div class="about-text">
-                    <h3>About Me</h3>
-                    <p>
-                        I'm Anthony Rivera, an artist and educator passionate about fostering creativity and self-expression. My work primarily focuses on drawing, painting, and collage, with a strong influence from Post-Impressionism and Expressionism. I believe art is more than just technical skill, it's a way to think critically, process emotions, and explore new ideas.
-                    </p>
-                    
-                    <h3>Teaching Philosophy</h3>
-                    <p>
-                        I strive to create a welcoming, creative space where students feel excited to explore, experiment, and express themselves. Art isn't just about making something perfect, it's about thinking creatively, solving problems, and processing emotions in a personal way. My classroom is an inclusive, judgment-free zone where students of all backgrounds and skill levels are encouraged to be themselves.
-                    </p>
-                    <p>
-                        I believe learning should be engaging, not monotonous. My goal is to foster an environment where students feel safe taking risks, knowing mistakes are part of the process. Beyond technical skills, I emphasize creative problem-solving that extends beyond the classroom. I encourage students to experiment with different techniques, mediums, and ideas to find their unique voice.
-                    </p>
-                    <p>
-                        Teaching is a lifelong learning process. I model curiosity and growth, showing students that it's okay not to have all the answers right away. Ultimately, I want my classroom to be a place where students can step away from daily pressures, have fun, and create something meaningful.
-                    </p>
-                    
-                    <h3>Education</h3>
-                    <ul>
-                        <li>Bachelor of Fine Arts in Art Education, Southern Utah University, 2026</li>
-                        <li>Bachelor of Science in Cybersecurity, Southern Utah University, 2023</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="section-header">
-                <h2>Contact</h2>
-                <p>Get in touch for commissions, collaborations, or inquiries</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Connect With Me</h3>
-                    <p>Email: <a href="mailto:info@honeyantart.com">info@honeyantart.com</a></p>
-                    <p>Instagram: <a href="https://instagram.com/honeyantart" target="_blank">@honeyantart</a></p>
-                    <p>Based in Southern Utah</p>
-                    
-                    <div class="contact-hours">
-                        <h4>Response Time</h4>
-                        <p>I typically respond to inquiries within 2-3 business days.</p>
-                    </div>
-                </div>
-                
-                <div class="contact-form-container">
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">HoneyAntArt</div>
-            <div class="footer-nav">
-                <a href="#home">Home</a>
-                <a href="#work">Work</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://instagram.com/honeyantart" target="_blank" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a>
-                <a href="mailto:info@honeyantart.com" aria-label="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </a>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; <span id="current-year"></span> HoneyAntArt. All rights reserved.
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Rivera Art - Art Educator Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Make category cards clickable */
+        .category-card {
+            cursor: pointer;
+        }
+        
+        /* Ensure the linked text remains on top */
+        .category-info a {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#home">Anthony Rivera Art</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="home-content">
+                <h1>Art Educator & Visual Artist</h1>
+                <p class="artist-statement">
+                    Creating meaningful visual experiences while inspiring the next generation of artists through thoughtful education and mentorship.
+                </p>
+            </div>
+
+            <div class="portfolio-carousel">
+                <div class="carousel-container">
+                    <!-- Carousel items will be populated with JavaScript -->
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-prev">&lt;</button>
+                    <button class="carousel-next">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="section">
+            <div class="section-header">
+                <h2>Work</h2>
+                <p>Explore my portfolio across different artistic disciplines</p>
+            </div>
+            
+            <div class="category-grid">
+                <div class="category-card" data-category="advanced-art">
+                    <div class="category-slider">
+                        <!-- Slides will be populated with JavaScript -->
+                    </div>
+                    <div class="category-info">
+                        <h3>Advanced Art</h3>
+                        <p>Life Drawing & Anatomy, Painting</p>
+                        <a href="advanced-art.html" class="view-category">View Category</a>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="art-education">
+                    <div class="category-slider">
+                        <!-- Slides will be populated with JavaScript -->
+                    </div>
+                    <div class="category-info">
+                        <h3>Art Education</h3>
+                        <p>Teaching Materials, Student Work</p>
+                        <a href="art-education.html" class="view-category">View Category</a>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="art-foundations">
+                    <div class="category-slider">
+                        <!-- Slides will be populated with JavaScript -->
+                    </div>
+                    <div class="category-info">
+                        <h3>Art Foundations</h3>
+                        <p>2D Design, Digital Tools, Drawing, Photography</p>
+                        <a href="art-foundations.html" class="view-category">View Category</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2>About</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="Anthony Picture/AnthonyRivera.jpg" alt="Anthony Rivera" class="profile-image">
+                </div>
+                
+                <div class="about-text">
+                    <h3>About Me</h3>
+                    <p>
+                        I'm Anthony Rivera, an artist and educator passionate about fostering creativity and self-expression. My work primarily focuses on drawing, painting, and collage, with a strong influence from Post-Impressionism and Expressionism. I believe art is more than just technical skill, it's a way to think critically, process emotions, and explore new ideas.
+                    </p>
+                    
+                    <h3>Teaching Philosophy</h3>
+                    <p>
+                        I strive to create a welcoming, creative space where students feel excited to explore, experiment, and express themselves. Art isn't just about making something perfect, it's about thinking creatively, solving problems, and processing emotions in a personal way. My classroom is an inclusive, judgment-free zone where students of all backgrounds and skill levels are encouraged to be themselves.
+                    </p>
+                    <p>
+                        I believe learning should be engaging, not monotonous. My goal is to foster an environment where students feel safe taking risks, knowing mistakes are part of the process. Beyond technical skills, I emphasize creative problem-solving that extends beyond the classroom. I encourage students to experiment with different techniques, mediums, and ideas to find their unique voice.
+                    </p>
+                    <p>
+                        Teaching is a lifelong learning process. I model curiosity and growth, showing students that it's okay not to have all the answers right away. Ultimately, I want my classroom to be a place where students can step away from daily pressures, have fun, and create something meaningful.
+                    </p>
+                    
+                    <h3>Education</h3>
+                    <ul>
+                        <li>Bachelor of Fine Arts in Art Education, Southern Utah University, 2026</li>
+                        <li>Bachelor of Science in Cybersecurity, Southern Utah University, 2023</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Get in touch for commissions, collaborations, or inquiries</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Connect With Me</h3>
+                    <p>Email: <a href="mailto:info@anthonyriveraart.com">info@anthonyriveraart.com</a></p>
+                    <p>Instagram: <a href="https://instagram.com/anthonyriveraart" target="_blank">@anthonyriveraart</a></p>
+                    <p>Based in Southern Utah</p>
+                    
+                    <div class="contact-hours">
+                        <h4>Response Time</h4>
+                        <p>I typically respond to inquiries within 2-3 business days.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">Anthony Rivera Art</div>
+                <div class="footer-social">
+                    <a href="https://instagram.com/anthonyriveraart" target="_blank" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="mailto:info@anthonyriveraart.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="current-year"></span> Anthony Rivera Art. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
 </html>
