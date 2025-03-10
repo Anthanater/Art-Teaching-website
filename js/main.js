@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize scroll animations
     initScrollAnimations();
+    
+    // Make category cards clickable
+    makeCardsClickable();
 });
 
 // Mobile Navigation Toggle
@@ -73,6 +76,29 @@ function initNavigation() {
                 link.classList.add('active');
             }
         });
+    });
+}
+
+// Make category cards clickable
+function makeCardsClickable() {
+    const categoryCards = document.querySelectorAll('.category-card');
+    
+    categoryCards.forEach(card => {
+        const linkElement = card.querySelector('.view-category');
+        if (linkElement) {
+            const href = linkElement.getAttribute('href');
+            
+            // Add cursor: pointer in JS as well (in case CSS is not loaded)
+            card.style.cursor = 'pointer';
+            
+            // Add click event to the entire card
+            card.addEventListener('click', function(e) {
+                // Don't trigger if the original link was clicked (let it handle normally)
+                if (e.target !== linkElement && !linkElement.contains(e.target)) {
+                    window.location.href = href;
+                }
+            });
+        }
     });
 }
 

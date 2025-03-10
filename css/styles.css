@@ -968,3 +968,14 @@ footer {
         min-width: calc(100% - 20px);
     }
 }
+
+/* Additional spacing for home section */
+#home {
+    padding-top: 10rem !important;
+}
+
+.home-content {
+    padding-top: 4rem;
+    margin-bottom: 2rem;
+}
+
