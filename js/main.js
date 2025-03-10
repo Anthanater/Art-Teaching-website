@@ -72,7 +72,9 @@ function initNavigation() {
         
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
+            const href = link.getAttribute('href');
+            const sectionId = href && href.startsWith('#') ? href.slice(1) : '';
+            if (sectionId === currentSection) {
                 link.classList.add('active');
             }
         });
@@ -95,7 +97,9 @@ function makeCardsClickable() {
             card.addEventListener('click', function(e) {
                 // Don't trigger if the original link was clicked (let it handle normally)
                 if (e.target !== linkElement && !linkElement.contains(e.target)) {
-                    window.location.href = href;
+                    if (href) {
+                        window.location.href = href;
+                    }
                 }
             });
         }
@@ -163,13 +167,25 @@ function initPortfolioCarousel() {
     portfolioImages.forEach((image) => {
         const item = document.createElement('div');
         item.className = 'carousel-item';
-        item.innerHTML = `
-            <img src="${image.path}" alt="${image.alt}">
-            <div class="carousel-overlay">
-                <h3>${image.alt}</h3>
-                <p>${image.category}</p>
-            </div>
-        `;
+        
+        const imgElement = document.createElement('img');
+        imgElement.src = image.path;
+        imgElement.alt = image.alt;
+        
+        const overlayDiv = document.createElement('div');
+        overlayDiv.className = 'carousel-overlay';
+        
+        const titleH3 = document.createElement('h3');
+        titleH3.textContent = image.alt;
+        
+        const categoryP = document.createElement('p');
+        categoryP.textContent = image.category;
+        
+        overlayDiv.appendChild(titleH3);
+        overlayDiv.appendChild(categoryP);
+        
+        item.appendChild(imgElement);
+        item.appendChild(overlayDiv);
         carouselContainer.appendChild(item);
         
         // Add click event for lightbox viewing
@@ -246,19 +262,30 @@ function initPortfolioCarousel() {
         if (!lightbox) {
             lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <span class="lightbox-close">&times;</span>
-                    <img class="lightbox-image" src="" alt="Gallery image">
-                    <div class="lightbox-caption"></div>
-                </div>
-            `;
+            
+            const lightboxContent = document.createElement('div');
+            lightboxContent.className = 'lightbox-content';
+            
+            const closeSpan = document.createElement('span');
+            closeSpan.className = 'lightbox-close';
+            closeSpan.textContent = '×';
+            
+            const lightboxImg = document.createElement('img');
+            lightboxImg.className = 'lightbox-image';
+            lightboxImg.alt = 'Gallery image';
+            
+            const captionDiv = document.createElement('div');
+            captionDiv.className = 'lightbox-caption';
+            
+            lightboxContent.appendChild(closeSpan);
+            lightboxContent.appendChild(lightboxImg);
+            lightboxContent.appendChild(captionDiv);
+            lightbox.appendChild(lightboxContent);
+            
             document.body.appendChild(lightbox);
             
             // Add event listeners for closing
-            const lightboxClose = lightbox.querySelector('.lightbox-close');
-            
-            lightboxClose.addEventListener('click', function() {
+            closeSpan.addEventListener('click', function() {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
@@ -282,8 +309,14 @@ function initPortfolioCarousel() {
         const lightboxImage = lightbox.querySelector('.lightbox-image');
         const lightboxCaption = lightbox.querySelector('.lightbox-caption');
         
-        lightboxImage.src = imageSrc;
-        lightboxCaption.textContent = imageAlt;
+        if (lightboxImage && imageSrc) {
+            lightboxImage.src = imageSrc;
+        }
+        
+        if (lightboxCaption) {
+            lightboxCaption.textContent = imageAlt || '';
+        }
+        
         lightbox.classList.add('active');
         
         // Prevent body scrolling when lightbox is open
@@ -344,7 +377,9 @@ function initCategorySliders() {
         images.forEach((imagePath, index) => {
             const slide = document.createElement('div');
             slide.className = `slide ${index === 0 ? 'active' : ''}`;
-            slide.style.backgroundImage = `url('${imagePath}')`;
+            if (imagePath) {
+                slide.style.backgroundImage = `url(${encodeURI(imagePath)})`;
+            }
             sliderContainer.appendChild(slide);
         });
         
@@ -377,9 +412,38 @@ function initContactForm() {
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
         
-        // Simple validation
-        if (!nameInput.value || !emailInput.value || !messageInput.value) {
-            alert('Please fill in all fields');
+        // Validate inputs
+        if (!nameInput || !emailInput || !messageInput) return;
+        
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+        
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        // Enhanced validation
+        if (!name) {
+            alert('Please enter your name');
+            nameInput.focus();
+            return;
+        }
+        
+        if (!email) {
+            alert('Please enter your email');
+            emailInput.focus();
+            return;
+        }
+        
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            emailInput.focus();
+            return;
+        }
+        
+        if (!message) {
+            alert('Please enter a message');
+            messageInput.focus();
             return;
         }
         
@@ -432,15 +496,36 @@ function initGallery() {
     if (!lightbox) {
         lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
-            <div class="lightbox-content">
-                <span class="lightbox-close">&times;</span>
-                <div class="lightbox-nav lightbox-prev">&lsaquo;</div>
-                <img class="lightbox-image" src="" alt="Gallery image">
-                <div class="lightbox-nav lightbox-next">&rsaquo;</div>
-                <div class="lightbox-caption"></div>
-            </div>
-        `;
+        
+        const lightboxContent = document.createElement('div');
+        lightboxContent.className = 'lightbox-content';
+        
+        const closeSpan = document.createElement('span');
+        closeSpan.className = 'lightbox-close';
+        closeSpan.textContent = '×';
+        
+        const prevDiv = document.createElement('div');
+        prevDiv.className = 'lightbox-nav lightbox-prev';
+        prevDiv.innerHTML = '‹';
+        
+        const lightboxImg = document.createElement('img');
+        lightboxImg.className = 'lightbox-image';
+        lightboxImg.alt = 'Gallery image';
+        
+        const nextDiv = document.createElement('div');
+        nextDiv.className = 'lightbox-nav lightbox-next';
+        nextDiv.innerHTML = '›';
+        
+        const captionDiv = document.createElement('div');
+        captionDiv.className = 'lightbox-caption';
+        
+        lightboxContent.appendChild(closeSpan);
+        lightboxContent.appendChild(prevDiv);
+        lightboxContent.appendChild(lightboxImg);
+        lightboxContent.appendChild(nextDiv);
+        lightboxContent.appendChild(captionDiv);
+        
+        lightbox.appendChild(lightboxContent);
         document.body.appendChild(lightbox);
     }
     
@@ -457,11 +542,22 @@ function initGallery() {
     function updateLightboxContent(index) {
         currentImageIndex = index;
         const item = galleryImages[index];
-        const imageSrc = item.querySelector('img').src;
-        const imageAlt = item.querySelector('img').alt;
+        if (!item) return;
         
-        lightboxImage.src = imageSrc;
-        lightboxCaption.textContent = imageAlt;
+        const imgElement = item.querySelector('img');
+        if (!imgElement) return;
+        
+        const imageSrc = imgElement.src;
+        const imageAlt = imgElement.alt || '';
+        
+        if (lightboxImage) {
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = imageAlt;
+        }
+        
+        if (lightboxCaption) {
+            lightboxCaption.textContent = imageAlt;
+        }
     }
     
     // Open lightbox when gallery item is clicked
@@ -489,8 +585,13 @@ function initGallery() {
     }
     
     // Click navigation
-    lightboxNext.addEventListener('click', nextImage);
-    lightboxPrev.addEventListener('click', prevImage);
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', nextImage);
+    }
+    
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', prevImage);
+    }
     
     // Keyboard navigation
     document.addEventListener('keydown', function(e) {
@@ -507,10 +608,12 @@ function initGallery() {
     });
     
     // Close lightbox when close button is clicked
-    lightboxClose.addEventListener('click', function() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
     
     // Close lightbox when clicking outside the image
     lightbox.addEventListener('click', function(e) {

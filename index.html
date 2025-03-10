@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade">
     <title>Anthony Rivera Art - Art Educator Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
@@ -157,7 +161,7 @@
                 <div class="contact-info">
                     <h3>Connect With Me</h3>
                     <p>Email: <a href="mailto:info@anthonyriveraart.com">info@anthonyriveraart.com</a></p>
-                    <p>Instagram: <a href="https://instagram.com/anthonyriveraart" target="_blank">@anthonyriveraart</a></p>
+                    <p>Instagram: <a href="https://instagram.com/anthonyriveraart" target="_blank" rel="noopener noreferrer">@anthonyriveraart</a></p>
                     <p>Based in Southern Utah</p>
                     
                     <div class="contact-hours">
@@ -170,12 +174,12 @@
                     <form id="contact-form" class="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required autocomplete="name">
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required autocomplete="email">
                         </div>
                         
                         <div class="form-group">
@@ -195,7 +199,7 @@
             <div class="footer-top">
                 <div class="footer-logo">Anthony Rivera Art</div>
                 <div class="footer-social">
-                    <a href="https://instagram.com/anthonyriveraart" target="_blank" aria-label="Instagram">
+                    <a href="https://instagram.com/anthonyriveraart" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
                     <a href="mailto:info@anthonyriveraart.com" aria-label="Email">
