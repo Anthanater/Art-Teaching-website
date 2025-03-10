@@ -368,6 +368,12 @@ nav ul li:last-child {
     margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .category-card {
     position: relative;
     overflow: hidden;
