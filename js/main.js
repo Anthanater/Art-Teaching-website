@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize navigation functionality
     initNavigation();
     
-    // Initialize hero slider
-    initHeroSlider();
+    // Initialize portfolio carousel
+    initPortfolioCarousel();
     
     // Initialize category sliders
     initCategorySliders();
@@ -76,100 +76,206 @@ function initNavigation() {
     });
 }
 
-// Hero Slider Functionality
-function initHeroSlider() {
-    const heroSlider = document.querySelector('.hero-slider');
+// Portfolio Carousel Functionality
+function initPortfolioCarousel() {
+    const portfolioCarousel = document.querySelector('.portfolio-carousel');
     
-    if (!heroSlider) return;
+    if (!portfolioCarousel) return;
     
-    const slidesContainer = heroSlider.querySelector('.slides');
-    const dotsContainer = heroSlider.querySelector('.slide-dots');
-    const prevBtn = heroSlider.querySelector('.prev-slide');
-    const nextBtn = heroSlider.querySelector('.next-slide');
-    let currentSlide = 0;
-    let slideInterval;
+    const carouselContainer = portfolioCarousel.querySelector('.carousel-container');
+    const prevBtn = portfolioCarousel.querySelector('.carousel-prev');
+    const nextBtn = portfolioCarousel.querySelector('.carousel-next');
     
-    // Define featured images for hero slider
-    const featuredImages = [
-        { path: 'images/Art Foundations/Digital Tools/Rivera_announcement-poster.jpg', alt: 'Digital poster design' },
-        { path: 'images/Art Foundations/Drawing 2/Master Copy.jpg', alt: 'Master copy drawing' },
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg', alt: 'Life drawing figure study' },
-        { path: 'images/Art Foundations/Photography/Rivera_Before_Sunrise.JPG', alt: 'Sunrise photography' }
+    // Collect all portfolio images from different categories
+    const portfolioImages = [
+        // Advanced Art - Life Drawing and Anatomy
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg', alt: 'Figure Study 1', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg', alt: 'Figure Study 2', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure3.jpg', alt: 'Figure Study 3', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure4.jpg', alt: 'Figure Study 4', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure5.jpg', alt: 'Figure Study 5', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure6.jpg', alt: 'Figure Study 6', category: 'Life Drawing' },
+        
+        // Advanced Art - Painting 1
+        { path: 'images/Advanced Art/Painting 1/Apple Painting.jpg', alt: 'Apple Painting', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Color Still Life.jpg', alt: 'Color Still Life', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Mono Still Life.jpg', alt: 'Monochrome Still Life', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Portrait.jpg', alt: 'Portrait Painting', category: 'Painting' },
+        
+        // Art Foundations - 2D Design
+        { path: 'images/Art Foundations/2D Design/mono-port.jpg', alt: 'Monochrome Portrait', category: '2D Design' },
+        
+        // Art Foundations - Digital Tools
+        { path: 'images/Art Foundations/Digital Tools/Album-Cover.png', alt: 'Album Cover Design', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Landscape-Portrait.png', alt: 'Landscape Portrait', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Magazine-Mockup.png', alt: 'Magazine Mockup', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Pamphlet.png', alt: 'Pamphlet Design', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Rivera_announcement-poster.jpg', alt: 'Announcement Poster', category: 'Digital Tools' },
+        
+        // Art Foundations - Drawing 1
+        { path: 'images/Art Foundations/Drawing 1/Block-Castle.jpg', alt: 'Block Castle', category: 'Drawing 1' },
+        { path: 'images/Art Foundations/Drawing 1/Contour-Lines.jpg', alt: 'Contour Lines', category: 'Drawing 1' },
+        { path: 'images/Art Foundations/Drawing 1/Flowers.jpg', alt: 'Flowers Drawing', category: 'Drawing 1' },
+        
+        // Art Foundations - Drawing 2
+        { path: 'images/Art Foundations/Drawing 2/Cupcakes.jpg', alt: 'Cupcakes Drawing', category: 'Drawing 2' },
+        { path: 'images/Art Foundations/Drawing 2/Figure Pastel.jpg', alt: 'Figure in Pastel', category: 'Drawing 2' },
+        { path: 'images/Art Foundations/Drawing 2/Master Copy.jpg', alt: 'Master Copy', category: 'Drawing 2' },
+        
+        // Art Foundations - Photography
+        { path: 'images/Art Foundations/Photography/Beth.jpg', alt: 'Portrait - Beth', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/ForestFilm.jpg', alt: 'Forest Film', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/Rivera_Before_Sunrise.JPG', alt: 'Before Sunrise', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG', alt: 'Fast Shutter Speed', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/Rivera_Line_2.JPG', alt: 'Line Study', category: 'Photography' }
     ];
     
-    // Create slides and dots
-    featuredImages.forEach((image, index) => {
-        // Create slide
-        const slide = document.createElement('div');
-        slide.className = `slide ${index === 0 ? 'active' : ''}`;
-        slide.style.backgroundImage = `url('${image.path}')`;
-        slidesContainer.appendChild(slide);
+    // Shuffle array to display a random selection of images
+    shuffleArray(portfolioImages);
+    
+    // Create carousel items
+    portfolioImages.forEach((image) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+        item.innerHTML = `
+            <img src="${image.path}" alt="${image.alt}">
+            <div class="carousel-overlay">
+                <h3>${image.alt}</h3>
+                <p>${image.category}</p>
+            </div>
+        `;
+        carouselContainer.appendChild(item);
         
-        // Create dot
-        const dot = document.createElement('div');
-        dot.className = `slide-dot ${index === 0 ? 'active' : ''}`;
-        dot.setAttribute('data-slide', index);
-        dotsContainer.appendChild(dot);
-        
-        // Add click event to dot
-        dot.addEventListener('click', () => {
-            goToSlide(index);
-            resetInterval();
+        // Add click event for lightbox viewing
+        item.addEventListener('click', function() {
+            openLightbox(image.path, image.alt);
         });
     });
+    
+    // Navigation functionality
+    let position = 0;
+    const itemWidth = document.querySelector('.carousel-item').offsetWidth + 20; // Including margin
+    const visibleItems = Math.floor(window.innerWidth / itemWidth);
+    const maxPosition = (portfolioImages.length - visibleItems) * itemWidth;
+    
+    function slideCarousel(newPosition) {
+        position = newPosition;
+        
+        // Ensure we don't go beyond boundaries
+        if (position < 0) position = 0;
+        if (position > maxPosition) position = maxPosition;
+        
+        carouselContainer.style.transform = `translateX(-${position}px)`;
+    }
+    
+    // Auto-scroll functionality
+    let autoScrollInterval;
+    
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            if (position < maxPosition) {
+                slideCarousel(position + itemWidth);
+            } else {
+                slideCarousel(0);
+            }
+        }, 4000);
+    }
+    
+    function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        startAutoScroll();
+    }
+    
+    // Initialize auto-scroll
+    startAutoScroll();
     
     // Navigation buttons
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
-            goToPrevSlide();
-            resetInterval();
+            slideCarousel(position - itemWidth);
+            resetAutoScroll();
         });
     }
     
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
-            goToNextSlide();
-            resetInterval();
+            slideCarousel(position + itemWidth);
+            resetAutoScroll();
         });
     }
     
-    // Auto-advance slides
-    startSlideInterval();
+    // Function to shuffle array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
     
-    // Slider Functions
-    function goToSlide(slideIndex) {
-        const slides = slidesContainer.querySelectorAll('.slide');
-        const dots = dotsContainer.querySelectorAll('.slide-dot');
+    // Open lightbox for clicked image
+    function openLightbox(imageSrc, imageAlt) {
+        // Get or create lightbox
+        let lightbox = document.querySelector('.lightbox');
         
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
+        if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <span class="lightbox-close">&times;</span>
+                    <img class="lightbox-image" src="" alt="Gallery image">
+                    <div class="lightbox-caption"></div>
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+            
+            // Add event listeners for closing
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
         
-        slides[slideIndex].classList.add('active');
-        dots[slideIndex].classList.add('active');
+        // Set lightbox content
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
         
-        currentSlide = slideIndex;
+        lightboxImage.src = imageSrc;
+        lightboxCaption.textContent = imageAlt;
+        lightbox.classList.add('active');
+        
+        // Prevent body scrolling when lightbox is open
+        document.body.style.overflow = 'hidden';
     }
     
-    function goToNextSlide() {
-        const slides = slidesContainer.querySelectorAll('.slide');
-        currentSlide = (currentSlide + 1) % slides.length;
-        goToSlide(currentSlide);
-    }
-    
-    function goToPrevSlide() {
-        const slides = slidesContainer.querySelectorAll('.slide');
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        goToSlide(currentSlide);
-    }
-    
-    function startSlideInterval() {
-        slideInterval = setInterval(goToNextSlide, 5000);
-    }
-    
-    function resetInterval() {
-        clearInterval(slideInterval);
-        startSlideInterval();
-    }
+    // Update carousel on window resize
+    window.addEventListener('resize', function() {
+        // Recalculate values
+        const itemWidth = document.querySelector('.carousel-item').offsetWidth + 20;
+        const visibleItems = Math.floor(window.innerWidth / itemWidth);
+        const maxPosition = (portfolioImages.length - visibleItems) * itemWidth;
+        
+        // Adjust position if needed
+        if (position > maxPosition) {
+            slideCarousel(maxPosition);
+        }
+    });
 }
 
 // Category Sliders Functionality
