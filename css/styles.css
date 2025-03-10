@@ -807,3 +807,56 @@ footer {
 .slide-up {
     animation: slideUp 0.8s ease forwards;
 }
+/* Lightbox Navigation */
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.lightbox-nav {
+    position: absolute;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    padding: 0 15px;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2001;
+}
+
+.lightbox-nav:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-prev {
+    left: -75px;
+}
+
+.lightbox-next {
+    right: -75px;
+}
+
+@media (max-width: 768px) {
+    .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+    }
+    
+    .lightbox-prev {
+        left: -50px;
+    }
+    
+    .lightbox-next {
+        right: -50px;
+    }
+}

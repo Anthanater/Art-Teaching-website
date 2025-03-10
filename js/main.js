@@ -303,7 +303,9 @@ function initGallery() {
         lightbox.innerHTML = `
             <div class="lightbox-content">
                 <span class="lightbox-close">&times;</span>
+                <div class="lightbox-nav lightbox-prev">&lsaquo;</div>
                 <img class="lightbox-image" src="" alt="Gallery image">
+                <div class="lightbox-nav lightbox-next">&rsaquo;</div>
                 <div class="lightbox-caption"></div>
             </div>
         `;
@@ -313,20 +315,63 @@ function initGallery() {
     const lightboxImage = lightbox.querySelector('.lightbox-image');
     const lightboxCaption = lightbox.querySelector('.lightbox-caption');
     const lightboxClose = lightbox.querySelector('.lightbox-close');
+    const lightboxNext = lightbox.querySelector('.lightbox-next');
+    const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+    
+    let currentImageIndex = 0;
+    const galleryImages = Array.from(galleryItems);
+    
+    // Function to update lightbox content
+    function updateLightboxContent(index) {
+        currentImageIndex = index;
+        const item = galleryImages[index];
+        const imageSrc = item.querySelector('img').src;
+        const imageAlt = item.querySelector('img').alt;
+        
+        lightboxImage.src = imageSrc;
+        lightboxCaption.textContent = imageAlt;
+    }
     
     // Open lightbox when gallery item is clicked
-    galleryItems.forEach(item => {
+    galleryItems.forEach((item, index) => {
         item.addEventListener('click', function() {
-            const imageSrc = this.querySelector('img').src;
-            const imageAlt = this.querySelector('img').alt;
-            
-            lightboxImage.src = imageSrc;
-            lightboxCaption.textContent = imageAlt;
+            currentImageIndex = index;
+            updateLightboxContent(currentImageIndex);
             lightbox.classList.add('active');
             
             // Prevent body scrolling when lightbox is open
             document.body.style.overflow = 'hidden';
         });
+    });
+    
+    // Next image
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        updateLightboxContent(currentImageIndex);
+    }
+    
+    // Previous image
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateLightboxContent(currentImageIndex);
+    }
+    
+    // Click navigation
+    lightboxNext.addEventListener('click', nextImage);
+    lightboxPrev.addEventListener('click', prevImage);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        } else if (e.key === 'ArrowLeft') {
+            prevImage();
+        } else if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     });
     
     // Close lightbox when close button is clicked
@@ -338,14 +383,6 @@ function initGallery() {
     // Close lightbox when clicking outside the image
     lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-    
-    // Close lightbox with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
