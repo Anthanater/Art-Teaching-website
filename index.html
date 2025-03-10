@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthony Rivera is an art educator and visual artist based in Southern Utah, specializing in drawing, painting, and digital art. View portfolio and teaching philosophy.">
+    <meta name="keywords" content="art educator, visual artist, art portfolio, drawing, painting, art education, Southern Utah, art teacher">
+    <meta name="author" content="Anthony Rivera">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://anthonyriveraart.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anthonyriveraart.com/">
+    <meta property="og:title" content="Anthony Rivera Art - Art Educator Portfolio">
+    <meta property="og:description" content="Anthony Rivera is an art educator and visual artist based in Southern Utah, specializing in drawing, painting, and digital art. View portfolio and teaching philosophy.">
+    <meta property="og:image" content="https://anthonyriveraart.com/Anthony%20Picture/AnthonyRivera.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anthonyriveraart.com/">
+    <meta property="twitter:title" content="Anthony Rivera Art - Art Educator Portfolio">
+    <meta property="twitter:description" content="Anthony Rivera is an art educator and visual artist based in Southern Utah, specializing in drawing, painting, and digital art. View portfolio and teaching philosophy.">
+    <meta property="twitter:image" content="https://anthonyriveraart.com/Anthony%20Picture/AnthonyRivera.jpg">
+    
     <title>Anthony Rivera Art - Art Educator Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
@@ -16,6 +37,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data - Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anthony Rivera",
+      "url": "https://anthonyriveraart.com",
+      "image": "https://anthonyriveraart.com/Anthony%20Picture/AnthonyRivera.jpg",
+      "sameAs": ["https://instagram.com/anthonyriveraart"],
+      "jobTitle": "Art Educator",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Southern Utah University"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Southern Utah",
+        "addressRegion": "UT",
+        "addressCountry": "US"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Southern Utah University"
+      },
+      "description": "Art educator and visual artist specializing in drawing, painting, and digital art."
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://anthonyriveraart.com",
+      "name": "Anthony Rivera Art",
+      "description": "Portfolio website of Anthony Rivera, art educator and visual artist",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://anthonyriveraart.com/?s={search_term}",
+        "query-input": "required name=search_term"
+      }
+    }
+    </script>
+    
     <style>
         /* Make category cards clickable */
         .category-card {
@@ -64,8 +130,8 @@
                     <!-- Carousel items will be populated with JavaScript -->
                 </div>
                 <div class="carousel-nav">
-                    <button class="carousel-prev">&lt;</button>
-                    <button class="carousel-next">&gt;</button>
+                    <button class="carousel-prev" aria-label="Previous slide">&lt;</button>
+                    <button class="carousel-next" aria-label="Next slide">&gt;</button>
                 </div>
             </div>
         </section>
@@ -121,7 +187,7 @@
             
             <div class="about-content">
                 <div class="about-image">
-                    <img src="Anthony Picture/AnthonyRivera.jpg" alt="Anthony Rivera" class="profile-image">
+                    <img src="Anthony Picture/AnthonyRivera.jpg" alt="Anthony Rivera - Art Educator and Visual Artist" class="profile-image">
                 </div>
                 
                 <div class="about-text">

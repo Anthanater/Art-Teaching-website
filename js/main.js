@@ -119,45 +119,45 @@ function initPortfolioCarousel() {
     // Collect all portfolio images from different categories
     const portfolioImages = [
         // Advanced Art - Life Drawing and Anatomy
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg', alt: 'Figure Study 1', category: 'Life Drawing' },
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg', alt: 'Figure Study 2', category: 'Life Drawing' },
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure3.jpg', alt: 'Figure Study 3', category: 'Life Drawing' },
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure4.jpg', alt: 'Figure Study 4', category: 'Life Drawing' },
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure5.jpg', alt: 'Figure Study 5', category: 'Life Drawing' },
-        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure6.jpg', alt: 'Figure Study 6', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg', alt: 'Figure Study 1 - Detailed anatomical figure drawing in charcoal', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg', alt: 'Figure Study 2 - Gesture drawing focusing on movement and form', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure3.jpg', alt: 'Figure Study 3 - Seated figure with emphasis on proportions', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure4.jpg', alt: 'Figure Study 4 - Detailed muscular anatomy study', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure5.jpg', alt: 'Figure Study 5 - Tonal figure drawing with dramatic lighting', category: 'Life Drawing' },
+        { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure6.jpg', alt: 'Figure Study 6 - Dynamic pose capturing movement', category: 'Life Drawing' },
         
         // Advanced Art - Painting 1
-        { path: 'images/Advanced Art/Painting 1/Apple Painting.jpg', alt: 'Apple Painting', category: 'Painting' },
-        { path: 'images/Advanced Art/Painting 1/Color Still Life.jpg', alt: 'Color Still Life', category: 'Painting' },
-        { path: 'images/Advanced Art/Painting 1/Mono Still Life.jpg', alt: 'Monochrome Still Life', category: 'Painting' },
-        { path: 'images/Advanced Art/Painting 1/Portrait.jpg', alt: 'Portrait Painting', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Apple Painting.jpg', alt: 'Apple Painting - Still life of apples with vibrant colors and shadows', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Color Still Life.jpg', alt: 'Color Still Life - Arrangement of objects with complementary color palette', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Mono Still Life.jpg', alt: 'Monochrome Still Life - Single color value study of arranged objects', category: 'Painting' },
+        { path: 'images/Advanced Art/Painting 1/Portrait.jpg', alt: 'Portrait Painting - Expressive portrait with warm color palette', category: 'Painting' },
         
         // Art Foundations - 2D Design
-        { path: 'images/Art Foundations/2D Design/mono-port.jpg', alt: 'Monochrome Portrait', category: '2D Design' },
+        { path: 'images/Art Foundations/2D Design/mono-port.jpg', alt: 'Monochrome Portrait - Black and white design focusing on value contrast', category: '2D Design' },
         
         // Art Foundations - Digital Tools
-        { path: 'images/Art Foundations/Digital Tools/Album-Cover.png', alt: 'Album Cover Design', category: 'Digital Tools' },
-        { path: 'images/Art Foundations/Digital Tools/Landscape-Portrait.png', alt: 'Landscape Portrait', category: 'Digital Tools' },
-        { path: 'images/Art Foundations/Digital Tools/Magazine-Mockup.png', alt: 'Magazine Mockup', category: 'Digital Tools' },
-        { path: 'images/Art Foundations/Digital Tools/Pamphlet.png', alt: 'Pamphlet Design', category: 'Digital Tools' },
-        { path: 'images/Art Foundations/Digital Tools/Rivera_announcement-poster.jpg', alt: 'Announcement Poster', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Album-Cover.png', alt: 'Album Cover Design - Contemporary digital illustration for music album', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Landscape-Portrait.png', alt: 'Landscape Portrait - Digital composite merging landscape with portrait', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Magazine-Mockup.png', alt: 'Magazine Mockup - Editorial design layout with typography', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Pamphlet.png', alt: 'Pamphlet Design - Informational brochure with clean layout', category: 'Digital Tools' },
+        { path: 'images/Art Foundations/Digital Tools/Rivera_announcement-poster.jpg', alt: 'Announcement Poster - Event poster with eye-catching typography', category: 'Digital Tools' },
         
         // Art Foundations - Drawing 1
-        { path: 'images/Art Foundations/Drawing 1/Block-Castle.jpg', alt: 'Block Castle', category: 'Drawing 1' },
-        { path: 'images/Art Foundations/Drawing 1/Contour-Lines.jpg', alt: 'Contour Lines', category: 'Drawing 1' },
-        { path: 'images/Art Foundations/Drawing 1/Flowers.jpg', alt: 'Flowers Drawing', category: 'Drawing 1' },
+        { path: 'images/Art Foundations/Drawing 1/Block-Castle.jpg', alt: 'Block Castle - Perspective drawing of geometric shapes', category: 'Drawing 1' },
+        { path: 'images/Art Foundations/Drawing 1/Contour-Lines.jpg', alt: 'Contour Lines - Line drawing exploring form through contour', category: 'Drawing 1' },
+        { path: 'images/Art Foundations/Drawing 1/Flowers.jpg', alt: 'Flowers Drawing - Botanical illustration with detailed petals', category: 'Drawing 1' },
         
         // Art Foundations - Drawing 2
-        { path: 'images/Art Foundations/Drawing 2/Cupcakes.jpg', alt: 'Cupcakes Drawing', category: 'Drawing 2' },
-        { path: 'images/Art Foundations/Drawing 2/Figure Pastel.jpg', alt: 'Figure in Pastel', category: 'Drawing 2' },
-        { path: 'images/Art Foundations/Drawing 2/Master Copy.jpg', alt: 'Master Copy', category: 'Drawing 2' },
+        { path: 'images/Art Foundations/Drawing 2/Cupcakes.jpg', alt: 'Cupcakes Drawing - Colorful pastel drawing of desserts', category: 'Drawing 2' },
+        { path: 'images/Art Foundations/Drawing 2/Figure Pastel.jpg', alt: 'Figure in Pastel - Colored pastel drawing of human figure', category: 'Drawing 2' },
+        { path: 'images/Art Foundations/Drawing 2/Master Copy.jpg', alt: 'Master Copy - Recreation of classical artwork', category: 'Drawing 2' },
         
         // Art Foundations - Photography
-        { path: 'images/Art Foundations/Photography/Beth.jpg', alt: 'Portrait - Beth', category: 'Photography' },
-        { path: 'images/Art Foundations/Photography/ForestFilm.jpg', alt: 'Forest Film', category: 'Photography' },
-        { path: 'images/Art Foundations/Photography/Rivera_Before_Sunrise.JPG', alt: 'Before Sunrise', category: 'Photography' },
-        { path: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG', alt: 'Fast Shutter Speed', category: 'Photography' },
-        { path: 'images/Art Foundations/Photography/Rivera_Line_2.JPG', alt: 'Line Study', category: 'Photography' }
+        { path: 'images/Art Foundations/Photography/Beth.jpg', alt: 'Portrait - Beth - Environmental portrait with natural lighting', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/ForestFilm.jpg', alt: 'Forest Film - Atmospheric forest scene captured on film', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/Rivera_Before_Sunrise.JPG', alt: 'Before Sunrise - Landscape photography in early morning light', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG', alt: 'Fast Shutter Speed - Action photograph demonstrating motion freeze', category: 'Photography' },
+        { path: 'images/Art Foundations/Photography/Rivera_Line_2.JPG', alt: 'Line Study - Architectural photograph emphasizing linear elements', category: 'Photography' }
     ];
     
     // Shuffle array to display a random selection of images
@@ -176,7 +176,7 @@ function initPortfolioCarousel() {
         overlayDiv.className = 'carousel-overlay';
         
         const titleH3 = document.createElement('h3');
-        titleH3.textContent = image.alt;
+        titleH3.textContent = image.alt.split(' - ')[0];
         
         const categoryP = document.createElement('p');
         categoryP.textContent = image.category;
@@ -269,6 +269,7 @@ function initPortfolioCarousel() {
             const closeSpan = document.createElement('span');
             closeSpan.className = 'lightbox-close';
             closeSpan.textContent = '×';
+            closeSpan.setAttribute('aria-label', 'Close lightbox');
             
             const lightboxImg = document.createElement('img');
             lightboxImg.className = 'lightbox-image';
@@ -311,6 +312,7 @@ function initPortfolioCarousel() {
         
         if (lightboxImage && imageSrc) {
             lightboxImage.src = imageSrc;
+            lightboxImage.alt = imageAlt || '';
         }
         
         if (lightboxCaption) {
@@ -346,22 +348,22 @@ function initCategorySliders() {
     // Define images for each category
     const categoryImages = {
         'advanced-art': [
-            'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg',
-            'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg',
-            'images/Advanced Art/Painting 1/Portrait.jpg',
-            'images/Advanced Art/Painting 1/Apple Painting.jpg'
+            { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg', alt: 'Figure Study - Anatomical drawing' },
+            { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg', alt: 'Figure Study - Gesture drawing' },
+            { path: 'images/Advanced Art/Painting 1/Portrait.jpg', alt: 'Portrait Painting' },
+            { path: 'images/Advanced Art/Painting 1/Apple Painting.jpg', alt: 'Still life with apples' }
         ],
         'art-education': [
-            'images/Art Foundations/Digital Tools/Magazine-Mockup.png',
-            'images/Art Foundations/Drawing 1/Contour-Lines.jpg',
-            'images/Art Foundations/Photography/Rivera_Line_2.JPG'
+            { path: 'images/Art Foundations/Digital Tools/Magazine-Mockup.png', alt: 'Student magazine design project' },
+            { path: 'images/Art Foundations/Drawing 1/Contour-Lines.jpg', alt: 'Student contour drawing exercise' },
+            { path: 'images/Art Foundations/Photography/Rivera_Line_2.JPG', alt: 'Student photography assignment' }
         ],
         'art-foundations': [
-            'images/Art Foundations/2D Design/mono-port.jpg',
-            'images/Art Foundations/Digital Tools/Album-Cover.png',
-            'images/Art Foundations/Drawing 1/Trash-Finished.jpg',
-            'images/Art Foundations/Drawing 2/Cupcakes.jpg',
-            'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG'
+            { path: 'images/Art Foundations/2D Design/mono-port.jpg', alt: 'Monochrome portrait design' },
+            { path: 'images/Art Foundations/Digital Tools/Album-Cover.png', alt: 'Digital album cover design' },
+            { path: 'images/Art Foundations/Drawing 1/Trash-Finished.jpg', alt: 'Drawing fundamentals project' },
+            { path: 'images/Art Foundations/Drawing 2/Cupcakes.jpg', alt: 'Pastel drawing of cupcakes' },
+            { path: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG', alt: 'Fast shutter photography' }
         ]
     };
     
@@ -374,11 +376,14 @@ function initCategorySliders() {
         // Create slides for this category
         const images = categoryImages[category] || [];
         
-        images.forEach((imagePath, index) => {
+        images.forEach((image, index) => {
             const slide = document.createElement('div');
             slide.className = `slide ${index === 0 ? 'active' : ''}`;
-            if (imagePath) {
-                slide.style.backgroundImage = `url(${encodeURI(imagePath)})`;
+            if (image.path) {
+                slide.style.backgroundImage = `url(${encodeURI(image.path)})`;
+                slide.setAttribute('aria-label', image.alt);
+                slide.setAttribute('role', 'img');
+                slide.setAttribute('title', image.alt);
             }
             sliderContainer.appendChild(slide);
         });
@@ -503,10 +508,12 @@ function initGallery() {
         const closeSpan = document.createElement('span');
         closeSpan.className = 'lightbox-close';
         closeSpan.textContent = '×';
+        closeSpan.setAttribute('aria-label', 'Close lightbox');
         
         const prevDiv = document.createElement('div');
         prevDiv.className = 'lightbox-nav lightbox-prev';
         prevDiv.innerHTML = '‹';
+        prevDiv.setAttribute('aria-label', 'Previous image');
         
         const lightboxImg = document.createElement('img');
         lightboxImg.className = 'lightbox-image';
@@ -515,6 +522,7 @@ function initGallery() {
         const nextDiv = document.createElement('div');
         nextDiv.className = 'lightbox-nav lightbox-next';
         nextDiv.innerHTML = '›';
+        nextDiv.setAttribute('aria-label', 'Next image');
         
         const captionDiv = document.createElement('div');
         captionDiv.className = 'lightbox-caption';
