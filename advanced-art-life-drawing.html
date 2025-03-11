@@ -116,7 +116,23 @@
         <div class="gallery-container">
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/Advanced Art/Life Drawing and Anatomy/Figure1.avif" alt="Figure Study 1" class="gallery-image" data-full-img="images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg">
+                    <picture>
+                    <source 
+                        srcset="images/Advanced Art/Life Drawing and Anatomy/Figure1.avif?width=400 400w,
+                                images/Advanced Art/Life Drawing and Anatomy/Figure1.avif?width=800 800w,
+                                images/Advanced Art/Life Drawing and Anatomy/Figure1.avif 1200w" 
+                        type="image/avif">
+                    <img 
+                        srcset="images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg?width=400 400w,
+                                images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg?width=800 800w,
+                                images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg 1200w"
+                        sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                        src="images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg" 
+                        alt="Figure Study 1" 
+                        class="gallery-image" 
+                        data-full-img="images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg"
+                        loading="lazy">
+                </picture>
                     <div class="gallery-overlay">
                         <h3>Figure Study 1</h3>
                     </div>

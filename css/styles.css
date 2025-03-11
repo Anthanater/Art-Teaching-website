@@ -999,4 +999,4 @@ footer {
     width: 100%;
     border-radius: 4px;
     box-shadow: var(--shadow);
-}
+}\n/* Responsive Images */\npicture {\n    display: block;\n    width: 100%;\n}
