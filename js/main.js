@@ -169,8 +169,11 @@ function initPortfolioCarousel() {
         item.className = 'carousel-item';
         
         const imgElement = document.createElement('img');
-        imgElement.src = image.path;
+        // Convert JPG path to AVIF for thumbnails but keep the original for full-size
+        const avifPath = image.path.replace('.jpg', '.avif').replace('.JPG', '.avif').replace('.png', '.avif');
+        imgElement.src = avifPath;
         imgElement.alt = image.alt;
+        imgElement.setAttribute('data-full-img', image.path);
         
         const overlayDiv = document.createElement('div');
         overlayDiv.className = 'carousel-overlay';
@@ -190,7 +193,8 @@ function initPortfolioCarousel() {
         
         // Add click event for lightbox viewing
         item.addEventListener('click', function() {
-            openLightbox(image.path, image.alt);
+            const fullImg = imgElement.getAttribute('data-full-img');
+            openLightbox(fullImg, image.alt);
         });
     });
     
@@ -348,22 +352,22 @@ function initCategorySliders() {
     // Define images for each category
     const categoryImages = {
         'advanced-art': [
-            { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg', alt: 'Figure Study - Anatomical drawing' },
-            { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg', alt: 'Figure Study - Gesture drawing' },
-            { path: 'images/Advanced Art/Painting 1/Portrait.jpg', alt: 'Portrait Painting' },
-            { path: 'images/Advanced Art/Painting 1/Apple Painting.jpg', alt: 'Still life with apples' }
+            { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.avif', alt: 'Figure Study - Anatomical drawing', fullImg: 'images/Advanced Art/Life Drawing and Anatomy/Figure1.jpg' },
+            { path: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.avif', alt: 'Figure Study - Gesture drawing', fullImg: 'images/Advanced Art/Life Drawing and Anatomy/Figure2.jpg' },
+            { path: 'images/Advanced Art/Painting 1/Portrait.avif', alt: 'Portrait Painting', fullImg: 'images/Advanced Art/Painting 1/Portrait.jpg' },
+            { path: 'images/Advanced Art/Painting 1/Apple Painting.avif', alt: 'Still life with apples', fullImg: 'images/Advanced Art/Painting 1/Apple Painting.jpg' }
         ],
         'art-education': [
-            { path: 'images/Art Foundations/Digital Tools/Magazine-Mockup.png', alt: 'Student magazine design project' },
-            { path: 'images/Art Foundations/Drawing 1/Contour-Lines.jpg', alt: 'Student contour drawing exercise' },
-            { path: 'images/Art Foundations/Photography/Rivera_Line_2.JPG', alt: 'Student photography assignment' }
+            { path: 'images/Art Foundations/Digital Tools/Magazine-Mockup.avif', alt: 'Student magazine design project', fullImg: 'images/Art Foundations/Digital Tools/Magazine-Mockup.png' },
+            { path: 'images/Art Foundations/Drawing 1/Contour-Lines.avif', alt: 'Student contour drawing exercise', fullImg: 'images/Art Foundations/Drawing 1/Contour-Lines.jpg' },
+            { path: 'images/Art Foundations/Photography/Rivera_Line_2.avif', alt: 'Student photography assignment', fullImg: 'images/Art Foundations/Photography/Rivera_Line_2.JPG' }
         ],
         'art-foundations': [
-            { path: 'images/Art Foundations/2D Design/mono-port.jpg', alt: 'Monochrome portrait design' },
-            { path: 'images/Art Foundations/Digital Tools/Album-Cover.png', alt: 'Digital album cover design' },
-            { path: 'images/Art Foundations/Drawing 1/Trash-Finished.jpg', alt: 'Drawing fundamentals project' },
-            { path: 'images/Art Foundations/Drawing 2/Cupcakes.jpg', alt: 'Pastel drawing of cupcakes' },
-            { path: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG', alt: 'Fast shutter photography' }
+            { path: 'images/Art Foundations/2D Design/mono-port.avif', alt: 'Monochrome portrait design', fullImg: 'images/Art Foundations/2D Design/mono-port.jpg' },
+            { path: 'images/Art Foundations/Digital Tools/Album-Cover.avif', alt: 'Digital album cover design', fullImg: 'images/Art Foundations/Digital Tools/Album-Cover.png' },
+            { path: 'images/Art Foundations/Drawing 1/Trash-Finished.avif', alt: 'Drawing fundamentals project', fullImg: 'images/Art Foundations/Drawing 1/Trash-Finished.jpg' },
+            { path: 'images/Art Foundations/Drawing 2/Cupcakes.avif', alt: 'Pastel drawing of cupcakes', fullImg: 'images/Art Foundations/Drawing 2/Cupcakes.jpg' },
+            { path: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.avif', alt: 'Fast shutter photography', fullImg: 'images/Art Foundations/Photography/Rivera_Fast_Shutter_01.JPG' }
         ]
     };
     
@@ -384,6 +388,10 @@ function initCategorySliders() {
                 slide.setAttribute('aria-label', image.alt);
                 slide.setAttribute('role', 'img');
                 slide.setAttribute('title', image.alt);
+                // Store the full image path for lightbox if needed
+                if (image.fullImg) {
+                    slide.setAttribute('data-full-img', image.fullImg);
+                }
             }
             sliderContainer.appendChild(slide);
         });
@@ -555,7 +563,8 @@ function initGallery() {
         const imgElement = item.querySelector('img');
         if (!imgElement) return;
         
-        const imageSrc = imgElement.src;
+        // Use data-full-img attribute for lightbox if available, otherwise fallback to src
+        const imageSrc = imgElement.getAttribute('data-full-img') || imgElement.src;
         const imageAlt = imgElement.alt || '';
         
         if (lightboxImage) {
