@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp:*)",
+      "Bash(find:*)",
+      "Bash(gh pr:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(sed:*)",
+      "Bash(tail:*)"
+    ],
+    "deny": []
+  }
+}
