@@ -9,7 +9,8 @@
       "Bash(ls:*)",
       "Bash(mkdir:*)",
       "Bash(sed:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "Bash(xmllint:*)"
     ],
     "deny": []
   }
