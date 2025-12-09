@@ -212,19 +212,30 @@
         }
 
         // Handle unmuting and fullscreen
-        function handleUnmute() {
+        function handleUnmute(event) {
+            // Prevent event from bubbling to video element
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
             video.muted = false;
             isUnmuted = true;
             unmuteOverlay.style.display = 'none';
             if (!hasInteracted) {
                 hasInteracted = true;
             }
-            
+
+            // Ensure video keeps playing on Android
+            if (video.paused) {
+                video.play().catch(err => console.log('Play error:', err));
+            }
+
             // On mobile, show controls since fullscreen will show native controls anyway
             if (isMobile()) {
                 body.classList.add('show-controls');
             }
-            
+
             // Request proper fullscreen when unmuting
             requestFullscreen();
         }
@@ -251,8 +262,8 @@
         fullscreenBtn.addEventListener('click', requestFullscreen);
         
         // Event listeners for unmute overlay
-        unmuteOverlay.addEventListener('click', handleUnmute);
-        unmuteOverlay.addEventListener('touchstart', handleUnmute);
+        unmuteOverlay.addEventListener('click', (e) => handleUnmute(e));
+        unmuteOverlay.addEventListener('touchstart', (e) => handleUnmute(e), { passive: false });
 
         // Try autoplay when video metadata is loaded
         video.addEventListener('loadedmetadata', () => {
