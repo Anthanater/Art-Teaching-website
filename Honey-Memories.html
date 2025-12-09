@@ -31,7 +31,7 @@
         #honeyVideo {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
         
         /* Hide controls initially for cleaner look */
@@ -165,18 +165,30 @@
 
         // Fullscreen function
         function requestFullscreen() {
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.webkitRequestFullscreen) {
-                video.webkitRequestFullscreen();
-            } else if (video.mozRequestFullScreen) {
-                video.mozRequestFullScreen();
-            } else if (video.msRequestFullscreen) {
-                video.msRequestFullscreen();
+            // Try to fullscreen the entire page first (better mobile experience)
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            } else {
+                // Fallback to video element fullscreen
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.mozRequestFullScreen) {
+                    video.mozRequestFullScreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
             }
         }
 
-        // Handle unmuting
+        // Handle unmuting and fullscreen
         function handleUnmute() {
             video.muted = false;
             isUnmuted = true;
@@ -184,6 +196,8 @@
             if (!hasInteracted) {
                 hasInteracted = true;
             }
+            // Request proper fullscreen when unmuting
+            requestFullscreen();
         }
 
         // Handle first user interaction
@@ -218,7 +232,16 @@
 
         // Handle fullscreen changes
         document.addEventListener('fullscreenchange', () => {
-            if (document.fullscreenElement === video) {
+            if (document.fullscreenElement) {
+                body.classList.remove('show-controls');
+            } else {
+                body.classList.add('show-controls');
+            }
+        });
+        
+        // Handle webkit fullscreen changes (Safari)
+        document.addEventListener('webkitfullscreenchange', () => {
+            if (document.webkitFullscreenElement) {
                 body.classList.remove('show-controls');
             } else {
                 body.classList.add('show-controls');
