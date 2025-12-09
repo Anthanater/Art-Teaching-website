@@ -106,7 +106,7 @@
 <body>
     <div id="loadingMessage">Loading...</div>
     <div id="unmuteOverlay">
-        <div id="unmuteMessage">Tap to play with sound 🔊</div>
+        <div id="unmuteMessage">Tap to play with sound</div>
     </div>
     <div id="videoContainer">
         <video id="honeyVideo" 
@@ -163,27 +163,50 @@
             }
         }
 
+        // Mobile detection
+        function isMobile() {
+            return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
         // Fullscreen function
         function requestFullscreen() {
-            // Try to fullscreen the entire page first (better mobile experience)
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.webkitRequestFullscreen) {
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) {
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.msRequestFullscreen) {
-                document.documentElement.msRequestFullscreen();
-            } else {
-                // Fallback to video element fullscreen
-                if (video.requestFullscreen) {
+            if (isMobile()) {
+                // On mobile, prioritize video element fullscreen for better compatibility
+                // This will show native video controls but ensures fullscreen works
+                if (video.webkitEnterFullscreen) {
+                    // iOS Safari specific
+                    video.webkitEnterFullscreen();
+                } else if (video.requestFullscreen) {
                     video.requestFullscreen();
                 } else if (video.webkitRequestFullscreen) {
                     video.webkitRequestFullscreen();
                 } else if (video.mozRequestFullScreen) {
                     video.mozRequestFullScreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
+                } else {
+                    // Fallback for mobile: try page fullscreen
+                    if (document.documentElement.requestFullscreen) {
+                        document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                        document.documentElement.webkitRequestFullscreen();
+                    }
+                }
+            } else {
+                // Desktop: try page fullscreen first
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
+                } else {
+                    // Fallback to video element fullscreen
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    }
                 }
             }
         }
@@ -196,6 +219,12 @@
             if (!hasInteracted) {
                 hasInteracted = true;
             }
+            
+            // On mobile, show controls since fullscreen will show native controls anyway
+            if (isMobile()) {
+                body.classList.add('show-controls');
+            }
+            
             // Request proper fullscreen when unmuting
             requestFullscreen();
         }
