@@ -128,6 +128,7 @@
         const body = document.body;
         let hasInteracted = false;
         let isUnmuted = false;
+        let isUnmuting = false;
 
         // Hide loading message when video is ready
         video.addEventListener('canplaythrough', () => {
@@ -213,15 +214,26 @@
 
         // Handle unmuting and fullscreen
         function handleUnmute(event) {
+            // Prevent any duplicate calls
+            if (isUnmuting) {
+                return;
+            }
+            isUnmuting = true;
+
             // Prevent event from bubbling to video element
             if (event) {
                 event.preventDefault();
                 event.stopPropagation();
+                event.stopImmediatePropagation();
             }
 
+            // First, hide the overlay immediately to prevent multiple clicks
+            unmuteOverlay.style.display = 'none';
+
+            // Then unmute and ensure video is playing
             video.muted = false;
             isUnmuted = true;
-            unmuteOverlay.style.display = 'none';
+
             if (!hasInteracted) {
                 hasInteracted = true;
             }
@@ -238,14 +250,28 @@
 
             // Request proper fullscreen when unmuting
             requestFullscreen();
+
+            // Reset the flag after a short delay
+            setTimeout(() => {
+                isUnmuting = false;
+            }, 500);
         }
 
         // Handle first user interaction
-        function handleFirstInteraction() {
+        function handleFirstInteraction(event) {
+            // Don't handle if unmute overlay is visible or we're unmuting
+            if (unmuteOverlay.style.display === 'flex' || isUnmuting) {
+                if (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                return;
+            }
+
             if (!hasInteracted) {
                 hasInteracted = true;
                 body.classList.add('show-controls');
-                
+
                 if (video.paused) {
                     video.play().then(() => {
                         requestFullscreen();
@@ -260,10 +286,28 @@
         video.addEventListener('click', handleFirstInteraction);
         video.addEventListener('touchstart', handleFirstInteraction);
         fullscreenBtn.addEventListener('click', requestFullscreen);
-        
+
         // Event listeners for unmute overlay
-        unmuteOverlay.addEventListener('click', (e) => handleUnmute(e));
-        unmuteOverlay.addEventListener('touchstart', (e) => handleUnmute(e), { passive: false });
+        // Use capture phase to ensure overlay gets the event first
+        unmuteOverlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            handleUnmute(e);
+        }, true);
+
+        unmuteOverlay.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            handleUnmute(e);
+        }, { passive: false, capture: true });
+
+        // Also prevent touchstart to avoid any ghost clicks
+        unmuteOverlay.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        }, { passive: false, capture: true });
 
         // Try autoplay when video metadata is loaded
         video.addEventListener('loadedmetadata', () => {
