@@ -5,7 +5,7 @@
 // after that, so the app opens with no connection. A new version installs in
 // the background the next time the app is opened online, and takes over the
 // time after that (one version at a time: no mixing of old and new files).
-const VERSION = '0.1.0+1-2c51c32-202610301625';
+const VERSION = '0.1.0+1-04fcfcb-202610301628';
 const FILES = [
   'assets/AssetManifest.bin',
   'assets/AssetManifest.bin.json',
